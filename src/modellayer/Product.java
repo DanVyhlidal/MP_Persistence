@@ -2,23 +2,35 @@ package modellayer;
 
 public class Product {
 
+	private int id;
 	private String name;
 	private double purchasePrice;
 	private double salesPrice;
 	private double rentPrice;
 	private String countryOfOrigin;
-	private int minStock;
+	private int amountInStock;
 	private Supplier supplier;
 	
-	public Product(String name, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin,
-			int minStock, Supplier supplier) {
+	public Product(int id, String name, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin,
+			int amountInStock, Supplier supplier) {
+		this.id = id;
 		this.name = name;
 		this.purchasePrice = purchasePrice;
 		this.salesPrice = salesPrice;
 		this.rentPrice = rentPrice;
 		this.countryOfOrigin = countryOfOrigin;
-		this.minStock = minStock;
+		this.amountInStock = amountInStock;
 		this.supplier = supplier;
+	}
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -61,12 +73,12 @@ public class Product {
 		this.countryOfOrigin = countryOfOrigin;
 	}
 
-	public int getMinStock() {
-		return minStock;
+	public int getAmountInStock() {
+		return amountInStock;
 	}
 
-	public void setMinStock(int minStock) {
-		this.minStock = minStock;
+	public void setMinStock(int amountInStock) {
+		this.amountInStock = amountInStock;
 	}
 	
 	public Supplier getSupplier() {

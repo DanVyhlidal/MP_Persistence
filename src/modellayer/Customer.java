@@ -1,7 +1,8 @@
 package modellayer;
 
 public class Customer {
-
+	
+	private int id;
 	private String name;
 	private String email;
 	private String street;
@@ -11,7 +12,7 @@ public class Customer {
 	private String phoneNumber;
 	private String customerType;
 	
-	public Customer(String name, String email, String street, int houseNumber, String zipcode, String city,
+	public Customer(int id, String name, String email, String street, int houseNumber, String zipcode, String city,
 			String phoneNumber, String customerType) {
 		this.name = name;
 		this.email = email;
@@ -22,6 +23,20 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 		this.customerType = customerType;
 	}
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 
 	public String getName() {
 		return name;

@@ -4,18 +4,29 @@ import java.util.Date;
 
 public class SaleOrder {
 	
+	private int id;
 	private Date dateOfOrder;
 	private Date deliveryDate;
 	private String deliveryStatus;
 	private String discount;
 	private Customer customer;
 	
-	public SaleOrder(Date dateOfOrder, Date deliveryDate, String deliveryStatus, String discount, Customer customer) {
+	public SaleOrder(int id, Date dateOfOrder, Date deliveryDate, String deliveryStatus, String discount, Customer customer) {
+		this.id = id;
 		this.dateOfOrder = dateOfOrder;
 		this.deliveryDate = deliveryDate;
 		this.deliveryStatus = deliveryStatus;
 		this.discount = discount;
 		this.customer = customer;
+	}
+
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Date getDateOfOrder() {
