@@ -6,8 +6,8 @@ public class ClothingProduct extends Product {
 	private String colour;
 	
 	public ClothingProduct(int id, String name, double purchasePrice, double salesPrice, double rentPrice,
-			String countryOfOrigin, int amountInStock, Supplier supplier, String size, String colour) {
-		super(id, colour, rentPrice, rentPrice, rentPrice, colour, amountInStock, supplier);
+			String countryOfOrigin, int amountInStock, String productType, int supplierId, String size, String colour) {
+		super(id, colour, rentPrice, rentPrice, rentPrice, colour, amountInStock, productType, supplierId);
 		this.size = size;
 		this.colour = colour;
 	}

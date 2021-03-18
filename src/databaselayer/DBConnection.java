@@ -14,7 +14,7 @@ import java.sql.DriverManager;
 public class DBConnection
 {   //Constants used to get access to the database
 	
-	private static final String  driver = "jdbc:sqlserver:hildur.ucn.dk";;
+	private static final String  driver = "jdbc:sqlserver://hildur.ucn.dk";;
     private static final String  databaseName = ";databaseName=dmai0920_1086335";
     
     private static String  userName = "; user=dmai0920_1086335";

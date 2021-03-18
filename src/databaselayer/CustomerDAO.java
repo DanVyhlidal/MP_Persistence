@@ -41,7 +41,7 @@ public class CustomerDAO implements CustomerDAOIF {
 		
 		rs = psSelectCustomer.executeQuery();
 		
-		if(rs.next()) {
+		while(rs.next()) {
 			customer = buildObject(rs);
 			customers.add(customer);
 		}

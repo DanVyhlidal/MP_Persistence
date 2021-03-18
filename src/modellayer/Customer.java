@@ -14,6 +14,7 @@ public class Customer {
 	
 	public Customer(int id, String name, String email, String street, int houseNumber, String zipcode, String city,
 			String phoneNumber, String customerType) {
+		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.street = street;

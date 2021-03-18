@@ -9,10 +9,11 @@ public class Product {
 	private double rentPrice;
 	private String countryOfOrigin;
 	private int amountInStock;
-	private Supplier supplier;
+	private int supplierId;
+	public ProductType productType;
 	
 	public Product(int id, String name, double purchasePrice, double salesPrice, double rentPrice, String countryOfOrigin,
-			int amountInStock, Supplier supplier) {
+			int amountInStock, String productType, int supplierId) {
 		this.id = id;
 		this.name = name;
 		this.purchasePrice = purchasePrice;
@@ -20,7 +21,11 @@ public class Product {
 		this.rentPrice = rentPrice;
 		this.countryOfOrigin = countryOfOrigin;
 		this.amountInStock = amountInStock;
-		this.supplier = supplier;
+		
+		
+		//TODO: Add logic for productType
+		this.productType = ProductType.valueOf(productType);
+		this.supplierId = supplierId;
 	}
 	
 	
@@ -81,12 +86,12 @@ public class Product {
 		this.amountInStock = amountInStock;
 	}
 	
-	public Supplier getSupplier() {
-		return supplier;
+	public int getSupplierId() {
+		return supplierId;
 	}
 	
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
+	public void setSupplier(int supplierId) {
+		this.supplierId = supplierId;
 	}
 	
 }

@@ -9,17 +9,21 @@ public class SaleOrder {
 	private Date deliveryDate;
 	private String deliveryStatus;
 	private String discount;
-	private Customer customer;
+	private int customerId;
 	
-	public SaleOrder(int id, Date dateOfOrder, Date deliveryDate, String deliveryStatus, String discount, Customer customer) {
+	public SaleOrder(int id, Date dateOfOrder, Date deliveryDate, String deliveryStatus, String discount, int customerId) {
 		this.id = id;
 		this.dateOfOrder = dateOfOrder;
 		this.deliveryDate = deliveryDate;
 		this.deliveryStatus = deliveryStatus;
 		this.discount = discount;
-		this.customer = customer;
+		this.customerId = customerId;
 	}
 
+	public SaleOrder(int customerId) {
+		this.customerId = customerId;
+	}
+	
 	
 	public int getId() {
 		return id;
@@ -61,12 +65,12 @@ public class SaleOrder {
 		this.discount = discount;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomer(int customerId) {
+		this.customerId = customerId;
 	}
 	
 	
