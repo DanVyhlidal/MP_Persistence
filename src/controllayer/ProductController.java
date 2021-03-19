@@ -41,4 +41,27 @@ public class ProductController {
 		}
 		return product;
 	}
+	
+	public int getProductAmountInStock(String name) {
+		int amountInStock = 0;
+		
+		try {
+			amountInStock = productDAO.retrieveAmountInStock(name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return amountInStock;
+	}
+		
+	public void updateProductAmountInStock(String name, int newAmountInStock) {
+		try {
+			productDAO.updateAmountInStock(name, newAmountInStock);;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }
