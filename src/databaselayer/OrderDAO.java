@@ -16,7 +16,7 @@ public class OrderDAO implements OrderDAOIF{
 	private static final String SELECT_ALL_ORDERS = "SELECT * FROM SaleOrder";
 	private PreparedStatement psSelectAllOrders;
 	
-	private static final String INSERT_ORDER = "INSERT into SaleOrder VALUES (?,?,?,?,?)";
+	private static final String INSERT_ORDER = "INSERT into SaleOrder VALUES (?,?,?,?)";
 	private PreparedStatement psInsertOrder;
 	
 	public OrderDAO() throws SQLException {
@@ -43,8 +43,7 @@ public class OrderDAO implements OrderDAOIF{
 		psInsertOrder.setDate(1, DatesConversion.convertUtilToSql(order.getDateOfOrder()));
 		psInsertOrder.setString(2, order.getDeliveryStatus());
 		psInsertOrder.setDate(3, DatesConversion.convertUtilToSql(order.getDeliveryDate()));
-		psInsertOrder.setString(4, order.getDiscount());
-		psInsertOrder.setInt(5, order.getCustomerId());
+		psInsertOrder.setInt(4, order.getCustomerId());
 		
 		psInsertOrder.executeUpdate();
 	}
@@ -70,7 +69,7 @@ public class OrderDAO implements OrderDAOIF{
 		SaleOrder order = null;
 		
 		try {
-			order = new SaleOrder(rs.getInt("id"), rs.getDate("dateOfOrder"), rs.getDate("deliveryDate"), rs.getString("deliveryStatus"), rs.getString("discount"), rs.getInt("customerId"));
+			order = new SaleOrder(rs.getInt("id"), rs.getDate("dateOfOrder"), rs.getDate("deliveryDate"), rs.getString("deliveryStatus"), rs.getInt("customerId"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

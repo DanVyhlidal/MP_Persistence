@@ -65,11 +65,10 @@ public class OrderController {
 		});
 	}
 
-	public SaleOrder finishOrder(Date dateOfOrder, Date deliveryDate, String discount) {
+	public SaleOrder finishOrder(Date dateOfOrder, Date deliveryDate) {
 		// Set all values
 		order.setDateOfOrder(dateOfOrder);
 		order.setDeliveryDate(deliveryDate);
-		order.setDiscount(discount);
 
 		order.setDeliveryStatus("Completed");
 		// insert order into database

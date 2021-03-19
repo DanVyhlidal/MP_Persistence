@@ -8,15 +8,13 @@ public class SaleOrder {
 	private Date dateOfOrder;
 	private Date deliveryDate;
 	private String deliveryStatus;
-	private String discount;
 	private int customerId;
 	
-	public SaleOrder(int id, Date dateOfOrder, Date deliveryDate, String deliveryStatus, String discount, int customerId) {
+	public SaleOrder(int id, Date dateOfOrder, Date deliveryDate, String deliveryStatus, int customerId) {
 		this.id = id;
 		this.dateOfOrder = dateOfOrder;
 		this.deliveryDate = deliveryDate;
 		this.deliveryStatus = deliveryStatus;
-		this.discount = discount;
 		this.customerId = customerId;
 	}
 
@@ -55,14 +53,6 @@ public class SaleOrder {
 
 	public void setDeliveryStatus(String deliveryStatus) {
 		this.deliveryStatus = deliveryStatus;
-	}
-
-	public String getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(String discount) {
-		this.discount = discount;
 	}
 
 	public int getCustomerId() {

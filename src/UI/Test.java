@@ -34,7 +34,7 @@ public class Test {
 		orderController.addProductToOrder(6,3);
 		
 		SaleOrder order = null;
-		order = orderController.finishOrder(dateOfOrder, dateOfDelivery, "private");
+		order = orderController.finishOrder(dateOfOrder, dateOfDelivery);
 		
 		//This should create 2 records in OrderLineItem table
 		orderController.addProductsToOrder();
