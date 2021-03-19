@@ -1,5 +1,7 @@
 package databaselayer;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,7 +9,6 @@ import java.sql.SQLException;
 
 import Helpers.DatesConversion;
 import modellayer.Invoice;
-import modellayer.SaleOrder;
 
 public class InvoiceDAO implements InvoiceDAOIF{
 	private static final String SELECT_INVOICE_BY_ID = "SELECT * FROM Invoice where id = ?";
@@ -15,7 +16,7 @@ public class InvoiceDAO implements InvoiceDAOIF{
 
 	private static final String INSERT_INVOICE = "INSERT into Invoice VALUES (?,?,?,?)";
 	private PreparedStatement psInsertInvoice;
-
+	
 	public InvoiceDAO() throws SQLException {
 
 		initPreparedStatement();		

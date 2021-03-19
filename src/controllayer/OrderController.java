@@ -26,6 +26,7 @@ public class OrderController {
 		productController = new ProductController();
 		customerController = new CustomerController();
 		invoiceController = new InvoiceController();
+		products = new HashMap<Integer, Integer>();
 		
 		try {
 			orderDAO = new OrderDAO();
@@ -54,13 +55,14 @@ public class OrderController {
 	}
 	
 	public void addProductToOrder(int productId, int quantity) {
-		OrderLineItem item = new OrderLineItem(quantity, productId, this.order.getId());
-		orderLineItemController.createOrderLineItem(item);
+		products.put(productId, quantity);
 	}
 	
 	public void addProductsToOrder() {
-		OrderLineItem item = new OrderLineItem(quantity, productId, this.order.getId());
-		orderLineItemController.createOrderLineItem(item);
+		products.forEach((key,value) -> {
+			OrderLineItem item = new OrderLineItem(value, key, this.order.getId());
+			orderLineItemController.createOrderLineItem(item);
+		});
 	}
 
 	public SaleOrder finishOrder(Date dateOfOrder, Date deliveryDate, String discount) {

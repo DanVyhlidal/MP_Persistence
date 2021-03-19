@@ -13,6 +13,9 @@ public class CustomerDAO implements CustomerDAOIF {
 	private static final String SELECT_CUSTOMER = "SELECT * FROM Customer WHERE phoneNumber = ?";
 	private PreparedStatement psSelectCustomer;
 	
+	private static final String SELECT_CUSTOMER_BY_ID = "SELECT * FROM Customer WHERE id = ?";
+	private PreparedStatement psSelectCustomerById;
+	
 	public CustomerDAO() throws SQLException {
 		
 		initPreparedStatement();		
@@ -24,6 +27,7 @@ public class CustomerDAO implements CustomerDAOIF {
 		
 		try {
 			psSelectCustomer= connection.prepareStatement(SELECT_CUSTOMER);
+			psSelectCustomerById= connection.prepareStatement(SELECT_CUSTOMER_BY_ID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -55,9 +59,9 @@ public class CustomerDAO implements CustomerDAOIF {
 		Customer customer = null;
 		ResultSet rs;
 		
-		psSelectCustomer.setInt(1, id);
+		psSelectCustomerById.setInt(1, id);
 		
-		rs = psSelectCustomer.executeQuery();
+		rs = psSelectCustomerById.executeQuery();
 		
 		if(rs.next()) {
 			customer = buildObject(rs);

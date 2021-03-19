@@ -60,9 +60,9 @@ public class ProductDAO implements ProductDAOIF{
 		Product product = null;
 		ResultSet rs;
 		
-		psSelectProduct.setInt(1, id);
+		psSelectProductById.setInt(1, id);
 		
-		rs = psSelectProduct.executeQuery();
+		rs = psSelectProductById.executeQuery();
 		
 		if(rs.next()) {
 			product = buildObject(rs);

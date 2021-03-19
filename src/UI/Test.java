@@ -19,9 +19,6 @@ public class Test {
 		customers = customerController.findCustomersbyPhone("456245648");
 		customer = customerController.getClickedCustomer("Matej");
 		
-		Product product = null;
-		product = productController.findProductByName("AR-15");
-		
 		Calendar cal = Calendar.getInstance();
 		Date dateOfOrder = cal.getTime();
 		
@@ -29,14 +26,22 @@ public class Test {
 		cal.set(2021, 10, 14);
 		Date dateOfDelivery = cal.getTime();
 		
-		
-		
 		int orderId = orderController.initOrder(1);
+		
+		//Adding pistol belt
+		orderController.addProductToOrder(2,8);
+		//Adding AR-15
+		orderController.addProductToOrder(6,3);
+		
 		SaleOrder order = null;
 		order = orderController.finishOrder(dateOfOrder, dateOfDelivery, "private");
 		
+		//This should create 2 records in OrderLineItem table
+		orderController.addProductsToOrder();
 		
-		System.out.println("...");
+		//This should create record in Invoice table
+		orderController.createInvoice();
+
 	}
 
 }
