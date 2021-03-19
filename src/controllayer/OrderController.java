@@ -107,9 +107,8 @@ public class OrderController {
 		for(OrderLineItem item : items) {
 			Product product = productController.findProductById(item.getProductId());
 			price += product.getSalesPrice() * item.getProductQuantity();
-			item.setProductQuantity(product.getAmountInStock() - item.getProductQuantity());
+			productController.updateProductAmountInStock(product.getName(), product.getAmountInStock()-item.getProductQuantity());
 		}
-		
 		if(customer.getCustomerType().toLowerCase().equals("private") && (price < 2500)) {
 			price += shippingTax;
 		}else if(customer.getCustomerType().toLowerCase().equals("club") && (price >= 1500)) {
