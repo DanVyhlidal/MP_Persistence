@@ -3,8 +3,10 @@ package databaselayer;
 import java.sql.SQLException;
 
 import modellayer.Invoice;
+import modellayer.SaleOrder;
 
 public interface InvoiceDAOIF {
 
-	Invoice retrieveInvoiceByInvoiceNumber(int id) throws SQLException;
+	void insertInvoice(Invoice invoice) throws SQLException;
+	Invoice retrieveInvoiceById(int id) throws SQLException;
 }

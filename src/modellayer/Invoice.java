@@ -7,13 +7,17 @@ public class Invoice {
 	private long invoiceNumber;
 	private Date paymentDate;
 	private double totalPrice;
-	private SaleOrder saleOrder;
+	private int saleOrderId;
 	
-	public Invoice(long invoiceNumber, Date paymentDate, double totalPrice, SaleOrder saleOrder) {
+	public Invoice() {
+		
+	}
+	
+	public Invoice(long invoiceNumber, Date paymentDate, double totalPrice, int saleOrderId) {
 		this.invoiceNumber = invoiceNumber;
 		this.paymentDate = paymentDate;
 		this.totalPrice = totalPrice;
-		this.saleOrder = saleOrder;
+		this.saleOrderId = saleOrderId;
 	}
 
 	public long getInvoiceNumber() {
@@ -40,12 +44,12 @@ public class Invoice {
 		this.totalPrice = totalPrice;
 	}
 
-	public SaleOrder getSaleOrder() {
-		return saleOrder;
+	public int getSaleOrderId() {
+		return saleOrderId;
 	}
 
-	public void setSaleOrder(SaleOrder saleOrder) {
-		this.saleOrder = saleOrder;
+	public void setSaleOrderId(int saleOrderId) {
+		this.saleOrderId = saleOrderId;
 	}
 	
 	

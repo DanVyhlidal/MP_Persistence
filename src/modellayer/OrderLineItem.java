@@ -36,6 +36,5 @@ public class OrderLineItem {
 		this.saleOrder = saleOrder;
 	}
 	
-	
 
 }
