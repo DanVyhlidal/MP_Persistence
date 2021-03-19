@@ -48,9 +48,25 @@ public class CustomerDAO implements CustomerDAOIF {
 		
 		return customers;
 	}
-	
-private Customer buildObject(ResultSet rs) throws SQLException {
+
+
+	@Override
+	public Customer retrieveCustomerById(int id) throws SQLException {
+		Customer customer = null;
+		ResultSet rs;
 		
+		psSelectCustomer.setInt(1, id);
+		
+		rs = psSelectCustomer.executeQuery();
+		
+		if(rs.next()) {
+			customer = buildObject(rs);
+		}
+		
+		return customer;
+	}
+
+	private Customer buildObject(ResultSet rs) throws SQLException {
 		Customer customer = null;
 		
 		try {

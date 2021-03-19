@@ -21,9 +21,6 @@ public class Product {
 		this.rentPrice = rentPrice;
 		this.countryOfOrigin = countryOfOrigin;
 		this.amountInStock = amountInStock;
-		
-		
-		//TODO: Add logic for productType
 		this.productType = ProductType.valueOf(productType);
 		this.supplierId = supplierId;
 	}

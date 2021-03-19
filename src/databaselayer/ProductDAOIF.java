@@ -7,4 +7,5 @@ import modellayer.Product;
 
 public interface ProductDAOIF {
 	Product retrieveProduct(String name) throws SQLException;
+	Product retrieveProductById(int id) throws SQLException;
 }

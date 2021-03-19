@@ -3,13 +3,13 @@ package modellayer;
 public class OrderLineItem {
 	
 	private int productQuantity;
-	private Product product;
-	private SaleOrder saleOrder;
+	private int productId;
+	private int saleOrderId;
 	
-	public OrderLineItem(int productQuantity, Product product, SaleOrder saleOrder) {
+	public OrderLineItem(int productQuantity, int productId, int saleOrderId) {
 		this.productQuantity = productQuantity;
-		this.product = product;
-		this.saleOrder = saleOrder;
+		this.productId = productId;
+		this.saleOrderId = saleOrderId;
 	}
 
 	public int getProductQuantity() {
@@ -20,20 +20,20 @@ public class OrderLineItem {
 		this.productQuantity = productQuantity;
 	}
 
-	public Product getProduct() {
-		return product;
+	public int getProductId() {
+		return productId;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProduct(int productId) {
+		this.productId = productId;
 	}
 
-	public SaleOrder getSaleOrder() {
-		return saleOrder;
+	public int getSaleOrderId() {
+		return saleOrderId;
 	}
 
-	public void setSaleOrder(SaleOrder saleOrder) {
-		this.saleOrder = saleOrder;
+	public void setSaleOrderId(int saleOrderId) {
+		this.saleOrderId = saleOrderId;
 	}
 	
 

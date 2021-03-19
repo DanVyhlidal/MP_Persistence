@@ -29,4 +29,16 @@ public class ProductController {
 		
 		return product;
 	}
+	
+	public Product findProductById(int id) {
+		Product product = null;
+		
+		try {
+			product = productDAO.retrieveProductById(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

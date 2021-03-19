@@ -14,6 +14,9 @@ public class ProductDAO implements ProductDAOIF{
 	private static final String SELECT_PRODUCT = "SELECT * FROM Product WHERE name = ?";
 	private PreparedStatement psSelectProduct;
 	
+	private static final String SELECT_PRODUCT_BY_ID = "SELECT * FROM Product WHERE id = ?";
+	private PreparedStatement psSelectProductById;
+	
 	private static final String RETRIEVE_ALL_PRODUCTS_BY_ID = "SELECT * FROM Product where id = ?";
 	private PreparedStatement psRetrieveAllProductsById;
 	
@@ -29,6 +32,7 @@ public class ProductDAO implements ProductDAOIF{
 		try {
 			psSelectProduct= connection.prepareStatement(SELECT_PRODUCT);
 			psRetrieveAllProductsById= connection.prepareStatement(RETRIEVE_ALL_PRODUCTS_BY_ID);
+			psSelectProductById= connection.prepareStatement(SELECT_PRODUCT_BY_ID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,6 +45,22 @@ public class ProductDAO implements ProductDAOIF{
 		ResultSet rs;
 		
 		psSelectProduct.setString(1, name);
+		
+		rs = psSelectProduct.executeQuery();
+		
+		if(rs.next()) {
+			product = buildObject(rs);
+		}
+		
+		return product;
+	}
+
+	@Override
+	public Product retrieveProductById(int id) throws SQLException {
+		Product product = null;
+		ResultSet rs;
+		
+		psSelectProduct.setInt(1, id);
 		
 		rs = psSelectProduct.executeQuery();
 		

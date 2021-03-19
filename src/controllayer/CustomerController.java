@@ -50,5 +50,18 @@ public class CustomerController {
 		return customerToReturn;
 	}
 	
+	public Customer getCustomerById(int id) {
+		Customer customer = null;
+		
+		try {
+			customer = customerDAO.retrieveCustomerById(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return customer;
+	}
+	
 	
 }

@@ -5,14 +5,24 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import databaselayer.OrderDAO;
+import modellayer.Customer;
+import modellayer.OrderLineItem;
+import modellayer.Product;
 import modellayer.SaleOrder;
 
 public class OrderController {
 	SaleOrder order;
 
 	OrderDAO orderDAO;
+	OrderLineItemController oliController;
+	ProductController pController;
+	CustomerController cController;
 
 	public OrderController() {
+		oliController = new OrderLineItemController();
+		pController = new ProductController();
+		cController = new CustomerController();
+		
 		try {
 			orderDAO = new OrderDAO();
 		} catch (SQLException e) {
@@ -37,6 +47,11 @@ public class OrderController {
 
 
 		return lastId;
+	}
+	
+	public void addProductToOrder(int productId, int quantity) {
+		OrderLineItem item = new OrderLineItem(quantity, productId, this.order.getId());
+		oliController.createOrderLineItem(item);
 	}
 
 	public SaleOrder finishOrder(Date dateOfOrder, Date deliveryDate, String discount) {
@@ -71,9 +86,27 @@ public class OrderController {
 	}
 
 	public double calculateTotalPrice () {
+		ArrayList<OrderLineItem> items = oliController.getOrderLineItemsByOrderId(this.order.getId());
+		Customer customer = cController.getCustomerById(this.order.getCustomerId());
 		
+		double price = 0;
+		int shippingTax = 45;
+		int discount = 10; // 10%
 		
-		return 0;
+		for(OrderLineItem item : items) {
+			Product product = pController.findProductById(item.getProductId());
+			price += product.getSalesPrice() * item.getProductQuantity();
+		}
+		
+		if(customer.getCustomerType().toLowerCase().equals("private") && (price < 2500)) {
+			price += shippingTax;
+		}else if(customer.getCustomerType().toLowerCase().equals("club") && (price >= 1500)) {
+			price = price - ((price / 100) * discount);
+			
+			price += shippingTax;
+		}
+		
+		return price;
 
 	}
 
