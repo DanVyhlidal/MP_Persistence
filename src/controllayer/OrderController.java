@@ -12,14 +12,14 @@ import modellayer.Product;
 import modellayer.SaleOrder;
 
 public class OrderController {
-	SaleOrder order;
-	HashMap<Integer, Integer> products;
+	private SaleOrder order;
+	private HashMap<Integer, Integer> products;
 
-	OrderDAO orderDAO;
-	OrderLineItemController orderLineItemController;
-	ProductController productController;
-	CustomerController customerController;
-	InvoiceController invoiceController;
+	private OrderDAO orderDAO;
+	private OrderLineItemController orderLineItemController;
+	private ProductController productController;
+	private CustomerController customerController;
+	private InvoiceController invoiceController;
 
 	public OrderController() {
 		orderLineItemController = new OrderLineItemController();

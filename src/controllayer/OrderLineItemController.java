@@ -8,7 +8,7 @@ import modellayer.OrderLineItem;
 
 public class OrderLineItemController {
 	
-	OrderLineItemDAO orderLineItemDAO;
+	private OrderLineItemDAO orderLineItemDAO;
 	
 	public OrderLineItemController() {
 		try {

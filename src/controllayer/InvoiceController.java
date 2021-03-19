@@ -10,7 +10,7 @@ import modellayer.Invoice;
 import Helpers.NumberConversion;
 
 public class InvoiceController {
-	InvoiceDAO invoiceDao;
+	private InvoiceDAO invoiceDao;
 	
 	public InvoiceController() {
 		try {
@@ -22,7 +22,7 @@ public class InvoiceController {
 	}
 	
 	
-	public int createInvoice (int saleOrderId, double totalPrice) {
+	public void createInvoice (int saleOrderId, double totalPrice) {
 		
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.DAY_OF_MONTH, 14);
@@ -41,6 +41,5 @@ public class InvoiceController {
 			e.printStackTrace();
 		}
 		
-		return 0;
 	}
 }
