@@ -79,7 +79,7 @@ public class Product {
 		return amountInStock;
 	}
 
-	public void setMinStock(int amountInStock) {
+	public void setAmountInStock(int amountInStock) {
 		this.amountInStock = amountInStock;
 	}
 	

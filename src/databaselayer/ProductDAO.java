@@ -20,6 +20,12 @@ public class ProductDAO implements ProductDAOIF{
 	private static final String RETRIEVE_ALL_PRODUCTS_BY_ID = "SELECT * FROM Product where id = ?";
 	private PreparedStatement psRetrieveAllProductsById;
 	
+	private static final String RETRIEVE_AMOUNT_IN_STOCK_BY_NAME = "SELECT amountInStock FROM Product where name = ?";
+	private PreparedStatement psRetrieveAmountInStockByName;
+	
+	private static final String UPDATE_AMOUNT_IN_STOCK_BY_NAME = "UPDATE Product SET amountInStock = ? where name = ?";
+	private PreparedStatement psUpdateAmountInStockByName;
+	
 	public ProductDAO() throws SQLException {
 		
 		initPreparedStatement();		
@@ -32,7 +38,9 @@ public class ProductDAO implements ProductDAOIF{
 		try {
 			psSelectProduct= connection.prepareStatement(SELECT_PRODUCT);
 			psRetrieveAllProductsById= connection.prepareStatement(RETRIEVE_ALL_PRODUCTS_BY_ID);
-			psSelectProductById= connection.prepareStatement(SELECT_PRODUCT_BY_ID);
+			psSelectProductById = connection.prepareStatement(SELECT_PRODUCT_BY_ID);
+			psRetrieveAmountInStockByName = connection.prepareStatement(RETRIEVE_AMOUNT_IN_STOCK_BY_NAME);
+			psUpdateAmountInStockByName = connection.prepareStatement(UPDATE_AMOUNT_IN_STOCK_BY_NAME);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,5 +91,27 @@ public class ProductDAO implements ProductDAOIF{
 		}
 		
 		return product;
+	}
+
+	@Override
+	public int retrieveAmountInStock(String name) throws SQLException {
+		int amountInStock = 0;
+		ResultSet rs;
+		
+		psRetrieveAmountInStockByName.setString(1, name);
+		
+		rs = psRetrieveAmountInStockByName.executeQuery();
+		
+		amountInStock = rs.getInt(amountInStock);
+		
+		return amountInStock;
+	}
+
+	@Override
+	public void updateAmountInStock(String name, int newAmountInStock) throws SQLException {
+		psUpdateAmountInStockByName.setString(2, name);
+		psUpdateAmountInStockByName.setInt(1, newAmountInStock);
+		
+		psUpdateAmountInStockByName.executeUpdate();
 	}
 }
