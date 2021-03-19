@@ -9,18 +9,18 @@ import modellayer.*;
 
 public class Test {
 	public static void main(String[] args) {
-		CustomerController cc = new CustomerController();
-		ProductController pc = new ProductController();
-		OrderController oc = new OrderController();
+		CustomerController customerController = new CustomerController();
+		ProductController productController = new ProductController();
+		OrderController orderController = new OrderController();
 		
 		ArrayList<Customer> customers = null;
 		Customer customer = null;
 		
-		customers = cc.findCustomersbyPhone("456245648");
-		customer = cc.getClickedCustomer("Matej");
+		customers = customerController.findCustomersbyPhone("456245648");
+		customer = customerController.getClickedCustomer("Matej");
 		
 		Product product = null;
-		product = pc.findProductByName("AR-15");
+		product = productController.findProductByName("AR-15");
 		
 		Calendar cal = Calendar.getInstance();
 		Date dateOfOrder = cal.getTime();
@@ -31,9 +31,9 @@ public class Test {
 		
 		
 		
-		int orderId = oc.initOrder(1);
+		int orderId = orderController.initOrder(1);
 		SaleOrder order = null;
-		order = oc.finishOrder(dateOfOrder, dateOfDelivery, "private");
+		order = orderController.finishOrder(dateOfOrder, dateOfDelivery, "private");
 		
 		
 		System.out.println("...");

@@ -3,6 +3,7 @@ package controllayer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 import databaselayer.OrderDAO;
 import modellayer.Customer;
@@ -12,16 +13,19 @@ import modellayer.SaleOrder;
 
 public class OrderController {
 	SaleOrder order;
+	HashMap<Integer, Integer> products;
 
 	OrderDAO orderDAO;
-	OrderLineItemController oliController;
-	ProductController pController;
-	CustomerController cController;
+	OrderLineItemController orderLineItemController;
+	ProductController productController;
+	CustomerController customerController;
+	InvoiceController invoiceController;
 
 	public OrderController() {
-		oliController = new OrderLineItemController();
-		pController = new ProductController();
-		cController = new CustomerController();
+		orderLineItemController = new OrderLineItemController();
+		productController = new ProductController();
+		customerController = new CustomerController();
+		invoiceController = new InvoiceController();
 		
 		try {
 			orderDAO = new OrderDAO();
@@ -51,7 +55,12 @@ public class OrderController {
 	
 	public void addProductToOrder(int productId, int quantity) {
 		OrderLineItem item = new OrderLineItem(quantity, productId, this.order.getId());
-		oliController.createOrderLineItem(item);
+		orderLineItemController.createOrderLineItem(item);
+	}
+	
+	public void addProductsToOrder() {
+		OrderLineItem item = new OrderLineItem(quantity, productId, this.order.getId());
+		orderLineItemController.createOrderLineItem(item);
 	}
 
 	public SaleOrder finishOrder(Date dateOfOrder, Date deliveryDate, String discount) {
@@ -86,15 +95,15 @@ public class OrderController {
 	}
 
 	public double calculateTotalPrice () {
-		ArrayList<OrderLineItem> items = oliController.getOrderLineItemsByOrderId(this.order.getId());
-		Customer customer = cController.getCustomerById(this.order.getCustomerId());
+		ArrayList<OrderLineItem> items = orderLineItemController.getOrderLineItemsByOrderId(this.order.getId());
+		Customer customer = customerController.getCustomerById(this.order.getCustomerId());
 		
 		double price = 0;
 		int shippingTax = 45;
 		int discount = 10; // 10%
 		
 		for(OrderLineItem item : items) {
-			Product product = pController.findProductById(item.getProductId());
+			Product product = productController.findProductById(item.getProductId());
 			price += product.getSalesPrice() * item.getProductQuantity();
 		}
 		
@@ -108,6 +117,10 @@ public class OrderController {
 		
 		return price;
 
+	}
+	
+	public void createInvoice() {
+		invoiceController.createInvoice(this.order.getId(), calculateTotalPrice());
 	}
 
 
