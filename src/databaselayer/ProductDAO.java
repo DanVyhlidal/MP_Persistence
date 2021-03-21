@@ -33,7 +33,7 @@ public class ProductDAO implements ProductDAOIF{
 	
 	private void initPreparedStatement() throws SQLException {
 		
-		Connection connection = DBConnection.getInstance().getDBcon();
+		Connection connection = DBConnection.getInstance().getDBconnection();
 		
 		try {
 			psSelectProduct= connection.prepareStatement(SELECT_PRODUCT);

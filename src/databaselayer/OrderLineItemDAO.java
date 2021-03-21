@@ -23,7 +23,7 @@ public class OrderLineItemDAO implements OrderLineItemDAOIF {
 	
 	private void initPreparedStatement() throws SQLException {
 		
-		Connection connection = DBConnection.getInstance().getDBcon();
+		Connection connection = DBConnection.getInstance().getDBconnection();
 		
 		try {
 			psInsertOrderLineItem= connection.prepareStatement(INSERT_ORDERLINEITEM);

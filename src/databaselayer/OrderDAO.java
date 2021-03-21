@@ -26,7 +26,7 @@ public class OrderDAO implements OrderDAOIF{
 	
 	private void initPreparedStatement() throws SQLException {
 		
-		Connection connection = DBConnection.getInstance().getDBcon();
+		Connection connection = DBConnection.getInstance().getDBconnection();
 		
 		try {
 			psSelectAllOrders= connection.prepareStatement(SELECT_ALL_ORDERS);

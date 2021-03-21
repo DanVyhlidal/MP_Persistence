@@ -23,7 +23,7 @@ public class CustomerDAO implements CustomerDAOIF {
 	
 	private void initPreparedStatement() throws SQLException {
 		
-		Connection connection = DBConnection.getInstance().getDBcon();
+		Connection connection = DBConnection.getInstance().getDBconnection();
 		
 		try {
 			psSelectCustomer= connection.prepareStatement(SELECT_CUSTOMER);

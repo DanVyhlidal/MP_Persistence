@@ -54,8 +54,20 @@ public class OrderController {
 		return lastId;
 	}
 	
-	public void addProductToOrder(int productId, int quantity) {
-		products.put(productId, quantity);
+	public boolean addProductToOrder(int productId, int quantity) {
+		
+		boolean isRight;
+		
+		int amountInStock = productController.findProductById(productId).getAmountInStock();
+		
+		if(quantity > 0 && quantity <= amountInStock) {
+			products.put(productId, quantity);
+			isRight = true;
+		} else {
+			isRight = false;
+		}
+		
+		return isRight;
 	}
 	
 	public void addProductsToOrder() {

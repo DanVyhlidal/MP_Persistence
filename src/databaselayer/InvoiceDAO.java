@@ -23,7 +23,7 @@ public class InvoiceDAO implements InvoiceDAOIF{
 	}
 
 	private void initPreparedStatement() {
-		Connection connection = DBConnection.getInstance().getDBcon();
+		Connection connection = DBConnection.getInstance().getDBconnection();
 
 		try {
 			psSelectInvoiceById= connection.prepareStatement(SELECT_INVOICE_BY_ID);

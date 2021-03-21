@@ -20,8 +20,8 @@ public class DBConnection
     private static String  userName = "; user=dmai0920_1086335";
     private static String password = ";password=Password1!";
    
-    private DatabaseMetaData dma;
-    private static Connection con;
+    private DatabaseMetaData databaseMetaData;
+    private static Connection connection;
     
     // an instance of the class is generated
     private static DBConnection  instance = null;
@@ -43,12 +43,12 @@ public class DBConnection
         }
         try{
             //connection to the database
-            con = DriverManager.getConnection(url);
-            con.setAutoCommit(true);
-            dma = con.getMetaData(); // get meta data
-            System.out.println("Connection to " + dma.getURL());
-            System.out.println("Driver " + dma.getDriverName());
-            System.out.println("Database product name " + dma.getDatabaseProductName());
+        	connection = DriverManager.getConnection(url);
+        	connection.setAutoCommit(true);
+        	databaseMetaData = connection.getMetaData(); // get meta data
+            System.out.println("Connection to " + databaseMetaData.getURL());
+            System.out.println("Driver " + databaseMetaData.getDriverName());
+            System.out.println("Database product name " + databaseMetaData.getDatabaseProductName());
         }//end try
         catch(Exception e){
             System.out.println("Problems with the connection to the database:");
@@ -61,7 +61,7 @@ public class DBConnection
     public static void closeConnection()
     {
        	try{
-            con.close();
+       		connection.close();
             instance= null;
             System.out.println("The connection is closed");
         }
@@ -71,9 +71,9 @@ public class DBConnection
     }//end closeDB
 		
     //getDBcon: returns the singleton instance of the DB connection
-    public  Connection getDBcon()
+    public  Connection getDBconnection()
     {
-       return con;
+       return connection;
     }
     //this method is used to get the instance of the connection
     public static DBConnection getInstance()
@@ -84,5 +84,10 @@ public class DBConnection
         }
         return instance;
     }
+    
+    public static boolean instanceIsNull()
+    {
+       return (instance == null);
+    }    
 
 }//end DbConnection
