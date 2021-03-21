@@ -18,21 +18,21 @@ public class Test {
 		Customer customer = null;
 		
 		customers = customerController.findCustomersbyPhone("456245648");
-		customer = customerController.getClickedCustomer("Matej");
+		customer = customerController.getClickedCustomer("Dan");
 		
 		Calendar cal = Calendar.getInstance();
 		Date dateOfOrder = cal.getTime();
 		
 		// The months start from 0 (Jan-0, Feb-1, ..., Dec-11)
-		cal.set(2021, 10, 14);
+		cal.set(2021, 3, 10);
 		Date dateOfDelivery = cal.getTime();
 		
 		int orderId = orderController.initOrder(1);
 		
 		//Adding pistol belt
-		orderController.addProductToOrder(2,8);
+		orderController.addProductToOrder(2,10);
 		//Adding AR-15
-		orderController.addProductToOrder(6,3);
+		orderController.addProductToOrder(6,5);
 		
 		SaleOrder order = null;
 		order = orderController.finishOrder(dateOfOrder, dateOfDelivery);
