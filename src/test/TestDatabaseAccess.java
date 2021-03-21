@@ -29,9 +29,5 @@ public class TestDatabaseAccess {
 		assertNotNull("Connected - connection cannot be null", connection);		
 	}
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 }
