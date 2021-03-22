@@ -21,10 +21,10 @@ public class CustomerController {
 		}
 	}
 	
-	public ArrayList<Customer> findCustomersbyPhone (String phoneNumber) {
+	public ArrayList<Customer> findCustomersByPhone (String phoneNumber) {
 		ArrayList<Customer> customers = null;
 		try {
-			customers = customerDAO.retrieveCustomerByPhoneNumber(phoneNumber);
+			customers = customerDAO.retrieveCustomersByPhoneNumber(phoneNumber);
 			selectedCustomers = customers;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

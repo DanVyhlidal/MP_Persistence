@@ -7,7 +7,7 @@ import modellayer.Customer;
 
 public interface CustomerDAOIF {
 	
-	ArrayList<Customer> retrieveCustomerByPhoneNumber(String phoneNumber) throws SQLException;
+	ArrayList<Customer> retrieveCustomersByPhoneNumber(String phoneNumber) throws SQLException;
 	
 	Customer retrieveCustomerById(int id) throws SQLException;
 }

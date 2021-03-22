@@ -17,7 +17,7 @@ public class Test {
 		ArrayList<Customer> customers = null;
 		Customer customer = null;
 		
-		customers = customerController.findCustomersbyPhone("456245648");
+		customers = customerController.findCustomersByPhone("456245648");
 		customer = customerController.getClickedCustomer("Dan");
 		
 		Calendar cal = Calendar.getInstance();

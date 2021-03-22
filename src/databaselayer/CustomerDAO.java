@@ -36,7 +36,7 @@ public class CustomerDAO implements CustomerDAOIF {
 	
 	
 	@Override
-	public ArrayList<Customer> retrieveCustomerByPhoneNumber(String phoneNumber) throws SQLException {
+	public ArrayList<Customer> retrieveCustomersByPhoneNumber(String phoneNumber) throws SQLException {
 		Customer customer = null;
 		ResultSet rs;
 		ArrayList<Customer> customers = new ArrayList<>();

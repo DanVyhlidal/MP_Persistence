@@ -27,7 +27,7 @@ public class TestCustomer {
 		Customer customer = null;
 		
 		// Act
-		customerController.findCustomersbyPhone(phoneNumber);
+		customerController.findCustomersByPhone(phoneNumber);
 		customer = customerController.getClickedCustomer("Matej");
 		
 		// Assert
