@@ -31,11 +31,14 @@ public class OrderController {
 		try {
 			orderDAO = new OrderDAO();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * Initializing the empty order
+	 * @param customerId
+	 * @return orderId for future reference in UI
+	 */
 	public int initOrder(int customerId) {
 		order = new SaleOrder(customerId);
 		ArrayList<SaleOrder> allOrders = null;
@@ -43,7 +46,6 @@ public class OrderController {
 		try {
 			allOrders = orderDAO.retrieveAllOrders();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -53,7 +55,12 @@ public class OrderController {
 
 		return lastId;
 	}
-	
+	/**
+	 * This method adds selected product by user to HashMap
+	 * @param productId
+	 * @param quantity
+	 * @return boolean value for testing
+	 */
 	public boolean addProductToOrder(int productId, int quantity) {
 		
 		boolean isRight;
@@ -69,7 +76,9 @@ public class OrderController {
 		
 		return isRight;
 	}
-	
+	/**
+	 * Iterating through the products HashMap and creating record in database of OrderLineItem
+	 */
 	public void addProductsToOrder() {
 		products.forEach((key,value) -> {
 			OrderLineItem item = new OrderLineItem(value, key, this.order.getId());
@@ -77,6 +86,12 @@ public class OrderController {
 		});
 	}
 
+	/**
+	 * Finishing up the order
+	 * @param dateOfOrder
+	 * @param deliveryDate
+	 * @return
+	 */
 	public SaleOrder finishOrder(Date dateOfOrder, Date deliveryDate) {
 		// Set all values
 		order.setDateOfOrder(dateOfOrder);
@@ -94,8 +109,12 @@ public class OrderController {
 
 		return this.order;
 	}
-
-
+	
+	/**
+	 * Helper method which helps us to retrieve the highest orderId from database
+	 * @param orders
+	 * @return highest orderId
+	 */
 	private int getLastIdFromOrders(ArrayList<SaleOrder> orders) {
 		int highestId = 0;
 
@@ -106,7 +125,11 @@ public class OrderController {
 
 		return highestId;
 	}
-
+	/**
+	 * Calculating the final price with shippingTax and discount
+	 * Updating the amount in stock of products based on a quantity in the order
+	 * @return the final price of the order
+	 */
 	public double calculateTotalPrice () {
 		ArrayList<OrderLineItem> items = orderLineItemController.getOrderLineItemsByOrderId(this.order.getId());
 		Customer customer = customerController.getCustomerById(this.order.getCustomerId());

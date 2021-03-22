@@ -29,7 +29,6 @@ public class CustomerDAO implements CustomerDAOIF {
 			psSelectCustomer= connection.prepareStatement(SELECT_CUSTOMER);
 			psSelectCustomerById= connection.prepareStatement(SELECT_CUSTOMER_BY_ID);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -76,7 +75,6 @@ public class CustomerDAO implements CustomerDAOIF {
 		try {
 			customer = new Customer(rs.getInt("id"), rs.getString("name"), rs.getString("email"), rs.getString("street"), rs.getInt("houseNumber"), rs.getString("zipcode"), rs.getString("city"), rs.getString("phoneNumber"), rs.getString("customerType"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

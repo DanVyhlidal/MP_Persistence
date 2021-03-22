@@ -29,7 +29,6 @@ public class InvoiceDAO implements InvoiceDAOIF{
 			psSelectInvoiceById= connection.prepareStatement(SELECT_INVOICE_BY_ID);
 			psInsertInvoice = connection.prepareStatement(INSERT_INVOICE);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -67,7 +66,6 @@ public class InvoiceDAO implements InvoiceDAOIF{
 		try {
 			invoice = new Invoice(rs.getLong("invoiceNumber"), rs.getDate("dateOfPayment"), rs.getDouble("totalPrice"), rs.getInt("saleOrderId"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

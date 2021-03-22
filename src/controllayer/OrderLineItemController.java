@@ -14,7 +14,6 @@ public class OrderLineItemController {
 		try {
 			orderLineItemDAO = new OrderLineItemDAO();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -23,7 +22,6 @@ public class OrderLineItemController {
 		try {
 			orderLineItemDAO.insertOrderLineItem(item);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -34,7 +32,6 @@ public class OrderLineItemController {
 		try {
 			items = orderLineItemDAO.retrieveOrderLineItemsByOrderId(id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

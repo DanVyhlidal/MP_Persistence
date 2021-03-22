@@ -29,14 +29,12 @@ public class OrderLineItemDAO implements OrderLineItemDAOIF {
 			psInsertOrderLineItem= connection.prepareStatement(INSERT_ORDERLINEITEM);
 			psRetrieveOrderLineItems = connection.prepareStatement(RETRIEVE_ORDERLINEITEMS);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void insertOrderLineItem(OrderLineItem item) throws SQLException {
-		// TODO Auto-generated method stub
 		psInsertOrderLineItem.setInt(1, item.getProductId());
 		psInsertOrderLineItem.setInt(2, item.getSaleOrderId());
 		psInsertOrderLineItem.setInt(3, item.getProductQuantity());
@@ -46,7 +44,6 @@ public class OrderLineItemDAO implements OrderLineItemDAOIF {
 
 	@Override
 	public ArrayList<OrderLineItem> retrieveOrderLineItemsByOrderId(int id) throws SQLException {
-		// TODO Auto-generated method stub	
 		ArrayList<OrderLineItem> orderLineItems = new ArrayList<OrderLineItem>();
 		psRetrieveOrderLineItems.setInt(1, id);
 		ResultSet rs;
@@ -68,7 +65,6 @@ public class OrderLineItemDAO implements OrderLineItemDAOIF {
 		try {
 			orderLineItem = new OrderLineItem(rs.getInt("productQuantity"),rs.getInt("productId"), rs.getInt("saleOrderId") );
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

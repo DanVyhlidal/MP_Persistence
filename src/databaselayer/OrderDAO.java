@@ -32,14 +32,12 @@ public class OrderDAO implements OrderDAOIF{
 			psSelectAllOrders= connection.prepareStatement(SELECT_ALL_ORDERS);
 			psInsertOrder = connection.prepareStatement(INSERT_ORDER);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	@Override
 	public void insertOrder(SaleOrder order) throws SQLException {
-		// TODO Auto-generated method stub
 		psInsertOrder.setDate(1, DatesConversion.convertUtilToSql(order.getDateOfOrder()));
 		psInsertOrder.setString(2, order.getDeliveryStatus());
 		psInsertOrder.setDate(3, DatesConversion.convertUtilToSql(order.getDeliveryDate()));
@@ -71,7 +69,6 @@ public class OrderDAO implements OrderDAOIF{
 		try {
 			order = new SaleOrder(rs.getInt("id"), rs.getDate("dateOfOrder"), rs.getDate("deliveryDate"), rs.getString("deliveryStatus"), rs.getInt("customerId"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

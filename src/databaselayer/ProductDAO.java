@@ -42,7 +42,6 @@ public class ProductDAO implements ProductDAOIF{
 			psRetrieveAmountInStockByName = connection.prepareStatement(RETRIEVE_AMOUNT_IN_STOCK_BY_NAME);
 			psUpdateAmountInStockByName = connection.prepareStatement(UPDATE_AMOUNT_IN_STOCK_BY_NAME);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -86,7 +85,6 @@ public class ProductDAO implements ProductDAOIF{
 		try {
 			product = new Product(rs.getInt("id"), rs.getString("name"), rs.getDouble("purchasePrice"), rs.getDouble("salesPrice"), rs.getDouble("rentPrice"), rs.getString("countryOfOrigin"), rs.getInt("amountInStock"), rs.getString("productType"), rs.getInt("supplierId"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

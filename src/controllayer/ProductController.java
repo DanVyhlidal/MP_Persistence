@@ -12,7 +12,6 @@ public class ProductController {
 		try {
 			productDAO = new ProductDAO();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -23,7 +22,6 @@ public class ProductController {
 		try {
 			product = productDAO.retrieveProduct(name);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -36,7 +34,6 @@ public class ProductController {
 		try {
 			product = productDAO.retrieveProductById(id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return product;
@@ -48,7 +45,6 @@ public class ProductController {
 		try {
 			amountInStock = productDAO.retrieveAmountInStock(name);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -59,7 +55,6 @@ public class ProductController {
 		try {
 			productDAO.updateAmountInStock(name, newAmountInStock);;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

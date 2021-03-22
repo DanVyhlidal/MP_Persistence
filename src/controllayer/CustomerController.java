@@ -20,20 +20,28 @@ public class CustomerController {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param phoneNumber
+	 * @return List of customers, because more customers can have the same phoneNumber
+	 */
 	public ArrayList<Customer> findCustomersByPhone (String phoneNumber) {
 		ArrayList<Customer> customers = null;
 		try {
 			customers = customerDAO.retrieveCustomersByPhoneNumber(phoneNumber);
 			selectedCustomers = customers;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Object was not found.");
 			e.printStackTrace();
 		}
 		return customers;
 	}
 	
+	/**
+	 * This method simulates the UI -> user clicks on a customer
+	 * @param name
+	 * @return Customer that has been selected by user
+	 */
 	public Customer getClickedCustomer(String name) {
 		Customer customerToReturn = null;
 		

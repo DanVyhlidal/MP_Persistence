@@ -16,12 +16,15 @@ public class InvoiceController {
 		try {
 			invoiceDao = new InvoiceDAO();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	
+	/**
+	 * Creating invoice with 14 day period of payment
+	 * @param saleOrderId
+	 * @param totalPrice
+	 */
 	public void createInvoice (int saleOrderId, double totalPrice) {
 		
 		Calendar calendar = Calendar.getInstance();
@@ -37,7 +40,6 @@ public class InvoiceController {
 		try {
 			invoiceDao.insertInvoice(invoice);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

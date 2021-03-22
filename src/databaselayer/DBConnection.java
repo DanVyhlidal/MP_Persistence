@@ -4,16 +4,13 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 /**
- * @Author FEN
- * @Version 2016.02.12
  * This class is used to create the connection to the database
  * It is implemented as a singleton. The constructor is private to ensure that only one connection exists
  */
 
 
-public class DBConnection
-{   //Constants used to get access to the database
-	
+public class DBConnection {
+	//Constants used to get access to the database
 	private static final String  driver = "jdbc:sqlserver://hildur.ucn.dk";;
     private static final String  databaseName = ";databaseName=dmai0920_1086335";
     

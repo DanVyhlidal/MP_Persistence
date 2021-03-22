@@ -4,6 +4,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class NumberConversion {
+	/**
+	 * Rounding the decimal places for inserting double values into database
+	 * @param value
+	 * @param places
+	 * @return
+	 */
 	public static double round(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();
 

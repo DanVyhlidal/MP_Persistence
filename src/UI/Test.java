@@ -8,6 +8,10 @@ import modellayer.*;
 
 
 public class Test {
+	/**
+	 * This method simulates the UI and user behavior
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		CustomerController customerController = new CustomerController();
@@ -16,33 +20,34 @@ public class Test {
 		
 		ArrayList<Customer> customers = null;
 		Customer customer = null;
+		SaleOrder order = null;
 		
+		
+		/*-----------First step------------*/
 		customers = customerController.findCustomersByPhone("456245648");
 		customer = customerController.getClickedCustomer("Dan");
 		
+		/*-----------Second step------------*/
+		int orderId = orderController.initOrder(1);
+		
+		/*-----------Third step------------*/ 
+		orderController.addProductToOrder(2,10); //Adding pistol belt
+		orderController.addProductToOrder(6,5);  //Adding AR-15
+		
+		/*-----------Fourth step------------*/
 		Calendar cal = Calendar.getInstance();
 		Date dateOfOrder = cal.getTime();
 		
-		// The months start from 0 (Jan-0, Feb-1, ..., Dec-11)
-		cal.set(2021, 3, 10);
+		cal.set(2021, 3, 10); // The months start from 0 (Jan-0, Feb-1, ..., Dec-11)
 		Date dateOfDelivery = cal.getTime();
 		
-		int orderId = orderController.initOrder(1);
 		
-		//Adding pistol belt
-		orderController.addProductToOrder(2,10);
-		//Adding AR-15
-		orderController.addProductToOrder(6,5);
-		
-		SaleOrder order = null;
+		/*-----------Fifth step------------*/
 		order = orderController.finishOrder(dateOfOrder, dateOfDelivery);
-		
-		//This should create 2 records in OrderLineItem table
 		orderController.addProductsToOrder();
-		
-		//This should create record in Invoice table
-		orderController.createInvoice();
 
+		/*-----------Sixth step------------*/
+		orderController.createInvoice();
 	}
 
 }
