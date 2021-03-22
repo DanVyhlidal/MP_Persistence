@@ -22,7 +22,6 @@ public class Test {
 		Customer customer = null;
 		SaleOrder order = null;
 		
-		
 		/*-----------First step------------*/
 		customers = customerController.findCustomersByPhone("456245648");
 		customer = customerController.getClickedCustomer("Dan");
